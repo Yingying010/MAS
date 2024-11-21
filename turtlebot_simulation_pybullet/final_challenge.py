@@ -1,10 +1,8 @@
-
 import pybullet as p
 import time
 import pybullet_data
 import yaml
 from cbs import cbs
-from a_star import AStar
 import math
 import threading
 

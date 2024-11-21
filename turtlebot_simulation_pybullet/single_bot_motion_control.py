@@ -140,13 +140,13 @@ p.setGravity(0, 0, -10)
 startPosition = [0, 0, 0]
 startOrientation = p.getQuaternionFromEuler([0, 0, 0])
 
-boxId = p.loadURDF("/Users/heartfillialucy/COMP0182-Multi-Agent-Systems/turtlebot_simulation_pybullet/data/turtlebot.urdf", startPosition, startOrientation, globalScaling=1)
+boxId = p.loadURDF("data/turtlebot.urdf", startPosition, startOrientation, globalScaling=1)
 p.resetDebugVisualizerCamera(cameraDistance=5, cameraYaw=0, cameraPitch=-89.9,
                              cameraTargetPosition=[0, 0, 0])
 
 # goto(boxId, 1, 1)
 
-waypoints = load_waypoints("/Users/heartfillialucy/COMP0182-Multi-Agent-Systems/turtlebot_simulation_pybullet/waypoints.txt")
+waypoints = load_waypoints("waypoints.txt")
 actual_trajectory = navigate_waypoints(boxId, waypoints)
 
 plot_trajectory(actual_trajectory, waypoints)
