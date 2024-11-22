@@ -212,10 +212,10 @@ global env_loaded
 env_loaded = False
 
 # Create environment
-env_params = create_env("./final_challenge/env.yaml")
+env_params = create_env("final_challenge/env.yaml")
 
 # Create turtlebots
-agent_box_ids, agent_name_to_box_id, box_id_to_goal, agent_yaml_params = create_agents("./final_challenge/actors.yaml")
+agent_box_ids, agent_name_to_box_id, box_id_to_goal, agent_yaml_params = create_agents("final_challenge/actors.yaml")
 
 p.configureDebugVisualizer(p.COV_ENABLE_RENDERING, 1)
 p.setRealTimeSimulation(1)
@@ -225,7 +225,7 @@ p.resetDebugVisualizerCamera(cameraDistance=5.7, cameraYaw=0, cameraPitch=-89.9,
 
 
 cbs.run(dimensions=env_params["map"]["dimensions"], obstacles=env_params["map"]["obstacles"], agents=agent_yaml_params["agents"], out_file="./final_challenge/cbs_output.yaml")
-cbs_schedule = read_cbs_output("./final_challenge/cbs_output.yaml")
+cbs_schedule = read_cbs_output("final_challenge/cbs_output.yaml")
 # Replace agent name with box id in cbs_schedule
 box_id_to_schedule = {}
 for name, value in cbs_schedule.items():
