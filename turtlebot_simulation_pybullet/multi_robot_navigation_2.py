@@ -302,13 +302,13 @@ startOrientation = p.getQuaternionFromEuler([0,0,0])
 global env_loaded
 env_loaded = False
 
-agents, goals, env_loaded = read_input("scene/room_scene_4_bots_env.yaml", env_loaded)
-cbs.main("scene/room_scene_4_bots.yaml", "output.yaml")
+agents, goals, env_loaded = read_input("scene/room_scene_4_bots/room_scene_4_bots_env.yaml", env_loaded)
+cbs.main("scene/room_scene_4_bots/room_scene_4_bots.yaml", "output.yaml")
 schedule = read_output("output.yaml")
 navigation(agents, goals, schedule)
 time.sleep(1)
 drop_cube(agents)
-_,goals,env_loaded = read_input("scene/room_scene_4_bots_stage_2.yaml", env_loaded)
-cbs.main("scene/room_scene_4_bots_stage_2.yaml", "output.yaml")
+_,goals,env_loaded = read_input("scene/room_scene_4_bots/room_scene_4_bots_stage_2.yaml", env_loaded)
+cbs.main("scene/room_scene_4_bots/room_scene_4_bots_stage_2.yaml", "output.yaml")
 schedule = read_output("output.yaml")
 navigation(agents, goals, schedule)
