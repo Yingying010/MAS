@@ -6,7 +6,6 @@ from cbs import cbs
 import math
 import threading
 
-
 def create_boundaries(length, width):
     """
         create rectangular boundaries with length and width
@@ -198,8 +197,8 @@ def run(agents, goals, schedule):
         t.join()
 
 
-physics_client = p.connect(p.GUI, options='--width=1920 --height=1080 --mp4=Robot2_finalChanllege.mp4 --mp4fps=30')
-# physics_client = p.connect(p.GUI)
+# physics_client = p.connect(p.GUI, options='--width=1920 --height=1080 --mp4=Robot2_finalChanllege.mp4 --mp4fps=30')
+physics_client = p.connect(p.GUI)
 p.setAdditionalSearchPath(pybullet_data.getDataPath())
 p.configureDebugVisualizer(p.COV_ENABLE_RENDERING, 0)
 p.configureDebugVisualizer(p.COV_ENABLE_GUI, 0)
@@ -226,10 +225,19 @@ p.resetDebugVisualizerCamera(cameraDistance=5.7, cameraYaw=0, cameraPitch=-89.9,
 
 cbs.run(dimensions=env_params["map"]["dimensions"], obstacles=env_params["map"]["obstacles"], agents=agent_yaml_params["agents"], out_file="./final_challenge/cbs_output.yaml")
 cbs_schedule = read_cbs_output("final_challenge/cbs_output.yaml")
+
+print(cbs_schedule)
+
 # Replace agent name with box id in cbs_schedule
 box_id_to_schedule = {}
 for name, value in cbs_schedule.items():
     box_id_to_schedule[agent_name_to_box_id[name]] = value
 
+print(f"agent_name_to_box_id:{agent_name_to_box_id}")
+print(f"agent_box_ids:{agent_box_ids}")
+print(f"box_id_to_goal:{box_id_to_goal}")
+print(f"box_id_to_schedule:{box_id_to_schedule}")
+
 run(agent_box_ids, box_id_to_goal, box_id_to_schedule)
+
 time.sleep(2)
