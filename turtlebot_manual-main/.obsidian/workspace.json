@@ -1,0 +1,196 @@
+{
+  "main": {
+    "id": "2fdbd2d7bb8dd190",
+    "type": "split",
+    "children": [
+      {
+        "id": "52d8358edc5aa3d0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "dcb85c00dc497147",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "FinalChallenge_Sim.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "FinalChallenge_Sim"
+            }
+          },
+          {
+            "id": "090e75e3c4ed7200",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "MR_autoNav_Real.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "MR_autoNav_Real"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "d77020e6c02b1c60",
+    "type": "split",
+    "children": [
+      {
+        "id": "c4a309cdccbd3676",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d320fbe288891d74",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "3ebf9ee8e4560ed3",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "b7ab76114fd952f0",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 293.5
+  },
+  "right": {
+    "id": "9f0d7cb185145bc6",
+    "type": "split",
+    "children": [
+      {
+        "id": "38d43eaf81c83851",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "833f068f8320a44a",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "MR_autoNav_Real.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for MR_autoNav_Real"
+            }
+          },
+          {
+            "id": "0171767b06d3603e",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "MR_autoNav_Real.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from MR_autoNav_Real"
+            }
+          },
+          {
+            "id": "f18c827477d1962d",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "eaa909c5b5247cf3",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "MR_autoNav_Real.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of MR_autoNav_Real"
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "090e75e3c4ed7200",
+  "lastOpenFiles": [
+    "FinalChallenge_Sim.md",
+    "MR_autoNav_Real.md",
+    "Installation_manual.md",
+    "Useful_Command.md",
+    "Repository_manual.md",
+    "SomeBugs.md",
+    "pic/invalidBufferSize.png",
+    "pic/astar.png",
+    "pic/URDF.png",
+    "pic/127ipv4_bashrc.png",
+    "Pasted image 20241121223859.png",
+    "pic/EleanorWIFI_ifconfig.png",
+    "pic/overall.md"
+  ]
+}
