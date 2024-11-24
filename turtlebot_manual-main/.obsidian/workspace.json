@@ -4,39 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "52d8358edc5aa3d0",
+        "id": "f4a38977d1e0c5e2",
         "type": "tabs",
         "children": [
           {
-            "id": "dcb85c00dc497147",
+            "id": "498bf59c6252f021",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "FinalChallenge_Sim.md",
+                "file": "simulation_cbs.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "FinalChallenge_Sim"
-            }
-          },
-          {
-            "id": "090e75e3c4ed7200",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "MR_autoNav_Real.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "MR_autoNav_Real"
+              "title": "simulation_cbs"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -154,10 +139,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "MR_autoNav_Real.md"
+                "file": "simulation_cbs.md"
               },
               "icon": "lucide-list",
-              "title": "Outline of MR_autoNav_Real"
+              "title": "Outline of simulation_cbs"
             }
           }
         ],
@@ -177,14 +162,18 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "090e75e3c4ed7200",
+  "active": "498bf59c6252f021",
   "lastOpenFiles": [
-    "FinalChallenge_Sim.md",
-    "MR_autoNav_Real.md",
     "Installation_manual.md",
-    "Useful_Command.md",
+    "simulation_dwa.md",
+    "pic/dwa_algorithm.png",
+    "simulation_cbs.md",
+    "MR_autoNav_Real.md",
     "Repository_manual.md",
+    "Useful_Command.md",
     "SomeBugs.md",
+    "pic/MacCameraNoControlList.png",
+    "pic/windowsUbuntuCameraControlList.jpg",
     "pic/invalidBufferSize.png",
     "pic/astar.png",
     "pic/URDF.png",

@@ -3,11 +3,30 @@ Date: 2025-11-22
 tags:
   - FinalChanllege
   - CodeAnalysis
+  - cbs
+  - simulation
 ---
 
 # CodeAnalysis
 
 ## main
+- 连接到 PyBullet GUI（图形用户界面），用于显示仿真窗口
+- 设置 PyBullet 的资源搜索路径
+- 禁用渲染，暂时关闭图形渲染
+- 禁用 GUI 控件
+- 禁用 TinyRenderer（基于 CPU 的渲染器）
+- 加载pybullet内置的平面模型
+- 标记环境是否已加载。
+- 使用配置好的障碍物环境文件
+- 定义机器人属性
+- 重新使用渲染
+- 启用实时仿真
+- 设置重力加速度
+- 调整摄像机视角
+- 调用 `cbs.run` 执行路径规划，规划结果保存到 `cbs_output.yaml` 文件
+- 使用 `read_cbs_output` 读取路径规划结果
+- 执行仿真
+- 仿真结束后等待 2 秒，确保所有机器人完成操作。
 
 ```python
   
@@ -105,14 +124,14 @@ Robots are not created in this function (check `create_turtlebot_actor`).
 
 	with open(yaml_file, 'r') as f:
 	
-	try:
-
-		env_params = yaml.load(f, Loader=yaml.FullLoader)
-
-	except yaml.YAMLError as e:
-
-		print(e)
+		try:
 	
+			env_params = yaml.load(f, Loader=yaml.FullLoader)
+	
+		except yaml.YAMLError as e:
+	
+			print(e)
+		
 	# Create env boundaries
 	
 	dimensions = env_params["map"]["dimensions"]

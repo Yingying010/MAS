@@ -212,9 +212,6 @@ Parameters:
 	```
 
 
-
-
-
 ## Output
 
 goal_list = [(1, 1), (2, 2), (3, 3)]
