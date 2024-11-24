@@ -197,8 +197,8 @@ def run(agents, goals, schedule):
         t.join()
 
 
-physics_client = p.connect(p.GUI, options='--width=1920 --height=1080 --mp4=Robot2_finalChanllege.mp4 --mp4fps=15')
-# physics_client = p.connect(p.GUI)
+# physics_client = p.connect(p.GUI, options='--width=1920 --height=1080 --mp4=Robot2_finalChanllege.mp4 --mp4fps=15')
+physics_client = p.connect(p.GUI)
 p.setAdditionalSearchPath(pybullet_data.getDataPath())
 p.configureDebugVisualizer(p.COV_ENABLE_RENDERING, 0)
 p.configureDebugVisualizer(p.COV_ENABLE_GUI, 0)
