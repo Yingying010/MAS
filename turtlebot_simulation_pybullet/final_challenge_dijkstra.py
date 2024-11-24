@@ -96,23 +96,23 @@ def searchSchedule(start, goal, obstacles, dimensions):
 
 
 # 机器人导航
-def navigation(robot_id, goal, schedule):
-    basePos = p.getBasePositionAndOrientation(robot_id)
+def navigation(agent, goal, schedule):
+    basePos = p.getBasePositionAndOrientation(agent)
     pos_index = 0
     dis_th = 0.4
     while(not checkPosWithBias(basePos[0], goal, dis_th)):
-        basePos = p.getBasePositionAndOrientation(robot_id)
-        next = [schedule[pos_index][0],schedule[pos_index][1]]
+        basePos = p.getBasePositionAndOrientation(agent)
+        next = [schedule[pos_index]["x"],schedule[pos_index]["y"]]
         if(checkPosWithBias(basePos[0], next, dis_th)):
             pos_index = pos_index + 1
         if(pos_index == len(schedule)):
-            p.setJointMotorControl2(robot_id, 0, p.VELOCITY_CONTROL, targetVelocity=0, force=1)
-            p.setJointMotorControl2(robot_id, 1, p.VELOCITY_CONTROL, targetVelocity=0, force=1)
+            p.setJointMotorControl2(agent, 0, p.VELOCITY_CONTROL, targetVelocity=0, force=1)
+            p.setJointMotorControl2(agent, 1, p.VELOCITY_CONTROL, targetVelocity=0, force=1)
             break
         x = basePos[0][0]
         y = basePos[0][1]
         Orientation = list(p.getEulerFromQuaternion(basePos[1]))[2]
-        goal_direction = math.atan2((schedule[pos_index][1] - y), (schedule[pos_index][0] - x))
+        goal_direction = math.atan2((schedule[pos_index]["y"] - y), (schedule[pos_index]["x"] - x))
 
         if(Orientation < 0):
             Orientation = Orientation + 2 * math.pi
@@ -134,8 +134,8 @@ def navigation(robot_id, goal, schedule):
         rightWheelVelocity = linear + angular
         leftWheelVelocity = linear - angular
 
-        p.setJointMotorControl2(robot_id, 0, p.VELOCITY_CONTROL, targetVelocity=leftWheelVelocity, force=1)
-        p.setJointMotorControl2(robot_id, 1, p.VELOCITY_CONTROL, targetVelocity=rightWheelVelocity, force=1)
+        p.setJointMotorControl2(agent, 0, p.VELOCITY_CONTROL, targetVelocity=leftWheelVelocity, force=1)
+        p.setJointMotorControl2(agent, 1, p.VELOCITY_CONTROL, targetVelocity=rightWheelVelocity, force=1)
         # time.sleep(0.001)
 
 
@@ -230,8 +230,8 @@ def run_multi_theads(agents, goals, schedule):
 
 # 主函数
 def main():
-    # physics_client = p.connect(p.GUI, options='--width=1920 --height=1080 --mp4=Robot2_finalChanllege_dijkstra.mp4 --mp4fps=15')
-    physics_client = p.connect(p.GUI)
+    physics_client = p.connect(p.GUI, options='--width=1920 --height=1080 --mp4=Robot2_finalChanllege_dijkstra.mp4 --mp4fps=15')
+    # physics_client = p.connect(p.GUI)
     p.setAdditionalSearchPath(pybullet_data.getDataPath())
     p.configureDebugVisualizer(p.COV_ENABLE_RENDERING, 0)
     p.configureDebugVisualizer(p.COV_ENABLE_GUI, 0)
