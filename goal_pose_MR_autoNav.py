@@ -251,9 +251,13 @@ def read_and_transform_waypoints(file_path, matrix):
         raise
 
     coordinates = []  # List to store transformed waypoints
+    coordinate_all = []
+
+    index = 0
 
     # Process waypoints for each agent
     for agent_id, steps in schedule_data.items():
+
         rospy.loginfo(f"Processing agent {agent_id}")
 
         for step in steps:
@@ -269,9 +273,11 @@ def read_and_transform_waypoints(file_path, matrix):
             # Append the transformed coordinates to the list
             coordinates.append((real_x, real_y))
 
+        coordinate_all[index] = coordinates
+        index += 1
         # break  # Remove this if you want to process multiple agents
 
-    return coordinates
+    return coordinate_all
 
 
 
@@ -289,7 +295,7 @@ def run(turtlebot_agents, turtlebot_aruco_ids, turtlebot_goal_lists):
     """
     threads = []
 
-    for agent_idx in turtlebot_agents:
+    for agent_idx in range(len(turtlebot_agents)):
         try:
             t = threading.Thread(target=navigation, 
                                  args=(
@@ -340,14 +346,15 @@ def main():
     # Begin the navigation process
     # navigation(turtlebot_name, aruco_id, coordinates)
 
-    turtlebot_agents = {1:"turtle1",2:"turtle2"}
-    turtlebot_aruco_ids = {1:"id402",2:"id403"}
-    turtlebot_goal_lists = {}
-    for agent_id, value in coordinates.items():
-        turtlebot_goal_lists[turtlebot_agents[agent_id]] = value
+    turtlebot_agents = ["turtle1","turtle2"]
+    turtlebot_aruco_ids = ["id100","id505"]
+
+    # turtlebot_goal_lists = {}
+    # for agent_id, value in coordinates.items():
+    #     turtlebot_goal_lists[turtlebot_agents[agent_id]] = value
 
 
-    run(turtlebot_agents, turtlebot_aruco_ids, turtlebot_goal_lists)
+    run(turtlebot_agents, turtlebot_aruco_ids, coordinates)
 
 
     
