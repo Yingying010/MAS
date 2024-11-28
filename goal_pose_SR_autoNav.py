@@ -294,7 +294,7 @@ def main():
 
     # Start navigation with the first agent's waypoints
     turtlebot_name = "turtle1"  # Name of your TurtleBot
-    aruco_id = "id402"          # ArUco marker ID for localization
+    aruco_id = "id100"          # ArUco marker ID for localization
 
     # Begin the navigation process
     navigation(turtlebot_name, aruco_id, coordinates)

@@ -17,12 +17,14 @@ source ~/catkin_ws/devel/setup.bash
 
 run 
 ```shell
-ssh ubuntu@192.168.0.105
+ssh ubuntu@192.168.0.106
+ssh ubuntu@192.168.0.217
 ```
 
 bring up basic packages to start TurtleBot3 applications by running:
 ```shell
-roslaunch turtlebot3_bringup turtlebot3_robot.launch
+ROS_NAMESPACE=tb3_0 roslaunch turtlebot3_bringup turtlebot3_robot.launch
+ROS_NAMESPACE=tb3_1 roslaunch turtlebot3_bringup turtlebot3_robot.launch
 ```
  
  run the applications by using rosrun and roslaunch on local PC. 
@@ -32,7 +34,8 @@ export TURTLEBOT3_MODEL=${TB3_MODEL}
 
 on local PC to launch the teleoperation of turtlebot.
 ```shell
-roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+ROS_NAMESPACE=tb3_0 roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+ROS_NAMESPACE=tb3_1 roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
 ```
 
 check camera list
@@ -68,12 +71,17 @@ uvcdynctrl --device=/dev/video0 --clist
 
 turn off the autofocus:
 ```shell
-uvcdynctrl --device=/dev/video0 --set='Focus, Auto' 0
+uvcdynctrl --device=/dev/video0 --set='Focus, Automatic Continuous' 0
 ```
 
 check if the autofocus is off:
 ```shell
-uvcdynctrl --device=/dev/video0 --get='Focus, Auto'
+uvcdynctrl --device=/dev/video0 --get='Focus, Automatic Continuous'
+```
+
+change the focus
+```shell
+uvcdynctrl --device=/dev/video0 --set='Focus, Absolute' 20
 ```
 
 run auto_aruco_maker_finder
@@ -93,6 +101,14 @@ rosrun rqt_gui rqt_gui
 
 run navigation
 ```shell
-rosrun auto_navigation goal_pose.py
+rosrun auto_navigation goal_pose_old.py
+rosrun auto_navigation goal_pose_SR_autoNav.py
+rosrun auto_navigation goal_pose_MR_autoNav.py
+
 ```
+
+
+goal_pose_old.py is one robot and one aruco
+goal_pose_SR_autoNav.py is one robot and one goal but using the yaml file
+
 
