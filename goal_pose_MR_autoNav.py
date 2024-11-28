@@ -102,6 +102,7 @@ def navigation(turtlebot_name, aruco_id, goal_list):
 
         # Check if the goal has been reached
         if check_goal_reached(init_pose, goal_x, goal_y, tolerance=0.1):
+            print(f"{turtlebot_name} x:{goal_x}, y:{goal_y}")
             rospy.loginfo(f"Waypoint {current_position_idx + 1} reached: Moving to next waypoint.")
             current_position_idx += 1  # Move to the next waypoint
 
@@ -253,8 +254,6 @@ def read_and_transform_waypoints(file_path, matrix):
     coordinates = []  # List to store transformed waypoints
     coordinate_all = []
 
-    index = 0
-
     # Process waypoints for each agent
     for agent_id, steps in schedule_data.items():
 
@@ -273,8 +272,7 @@ def read_and_transform_waypoints(file_path, matrix):
             # Append the transformed coordinates to the list
             coordinates.append((real_x, real_y))
 
-        coordinate_all[index] = coordinates
-        index += 1
+        coordinate_all.append(coordinates)
         # break  # Remove this if you want to process multiple agents
 
     return coordinate_all
@@ -346,8 +344,8 @@ def main():
     # Begin the navigation process
     # navigation(turtlebot_name, aruco_id, coordinates)
 
-    turtlebot_agents = ["turtle1","turtle2"]
-    turtlebot_aruco_ids = ["id100","id505"]
+    turtlebot_agents = ["tb3_0","tb3_1"]
+    turtlebot_aruco_ids = ["id504","id100"]
 
     # turtlebot_goal_lists = {}
     # for agent_id, value in coordinates.items():
