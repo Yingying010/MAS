@@ -101,6 +101,7 @@ rosrun rqt_gui rqt_gui
 
 run navigation
 ```shell
+cd catkin_ws/src/COMP0182-Multi-Agent-Systems/Week_03/turtlebot3_burger_auto_navigation/auto_navigation/scripts/
 rosrun auto_navigation goal_pose_old.py
 rosrun auto_navigation goal_pose_SR_autoNav.py
 rosrun auto_navigation goal_pose_MR_autoNav.py

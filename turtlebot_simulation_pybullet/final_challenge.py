@@ -6,6 +6,7 @@ from cbs import cbs
 import math
 import threading
 
+
 def create_boundaries(length, width):
     """
         create rectangular boundaries with length and width
@@ -115,6 +116,27 @@ def checkPosWithBias(Pos, goal, bias):
     else:
         return False
 
+def spin(agent):
+    """
+    Make the agent spin in place for a full circle.
+
+    Args:
+        agent (int): Agent ID.
+    """
+    spin_velocity = 2.0  # radians per second
+    spin_time = 2 * math.pi / spin_velocity  # Time to complete a full circle
+
+    start_time = time.time()
+    while time.time() - start_time < spin_time:
+        p.setJointMotorControl2(agent, 0, p.VELOCITY_CONTROL, targetVelocity=-spin_velocity, force=1)
+        p.setJointMotorControl2(agent, 1, p.VELOCITY_CONTROL, targetVelocity=spin_velocity, force=1)
+        time.sleep(0.01)
+
+    # 停止机器人
+    p.setJointMotorControl2(agent, 0, p.VELOCITY_CONTROL, targetVelocity=0, force=1)
+    p.setJointMotorControl2(agent, 1, p.VELOCITY_CONTROL, targetVelocity=0, force=1)
+    print(f"Agent {agent} completed spinning.")
+
 
 def navigation(agent, goal, schedule):
     """
@@ -139,6 +161,10 @@ def navigation(agent, goal, schedule):
         basePos = p.getBasePositionAndOrientation(agent)
         next = [schedule[index]["x"], schedule[index]["y"]]
         if(checkPosWithBias(basePos[0], next, dis_th)):
+            # 检查是否到达触发点
+            if index == 10:
+                print(f"Agent {agent} spinning at waypoint {index}.")
+                spin(agent)  # 调用转圈函数
             index = index + 1
         if(index == len(schedule)):
             p.setJointMotorControl2(agent, 0, p.VELOCITY_CONTROL, targetVelocity=0, force=1)
@@ -197,8 +223,8 @@ def run(agents, goals, schedule):
         t.join()
 
 
-physics_client = p.connect(p.GUI, options='--width=1920 --height=1080 --mp4=Robot2_finalChanllege.mp4 --mp4fps=15')
-# physics_client = p.connect(p.GUI)
+# physics_client = p.connect(p.GUI, options='--width=1920 --height=1080 --mp4=multi_3.mp4 --mp4fps=30')
+physics_client = p.connect(p.GUI)
 p.setAdditionalSearchPath(pybullet_data.getDataPath())
 p.configureDebugVisualizer(p.COV_ENABLE_RENDERING, 0)
 p.configureDebugVisualizer(p.COV_ENABLE_GUI, 0)
@@ -211,10 +237,10 @@ global env_loaded
 env_loaded = False
 
 # Create environment
-env_params = create_env("final_challenge/env.yaml")
+env_params = create_env("./final_challenge/env.yaml")
 
 # Create turtlebots
-agent_box_ids, agent_name_to_box_id, box_id_to_goal, agent_yaml_params = create_agents("final_challenge/actors.yaml")
+agent_box_ids, agent_name_to_box_id, box_id_to_goal, agent_yaml_params = create_agents("./final_challenge/actors.yaml")
 
 p.configureDebugVisualizer(p.COV_ENABLE_RENDERING, 1)
 p.setRealTimeSimulation(1)
@@ -224,20 +250,11 @@ p.resetDebugVisualizerCamera(cameraDistance=5.7, cameraYaw=0, cameraPitch=-89.9,
 
 
 cbs.run(dimensions=env_params["map"]["dimensions"], obstacles=env_params["map"]["obstacles"], agents=agent_yaml_params["agents"], out_file="./final_challenge/cbs_output.yaml")
-cbs_schedule = read_cbs_output("final_challenge/cbs_output.yaml")
-
-print(cbs_schedule)
-
+cbs_schedule = read_cbs_output("./final_challenge/cbs_output.yaml")
 # Replace agent name with box id in cbs_schedule
 box_id_to_schedule = {}
 for name, value in cbs_schedule.items():
     box_id_to_schedule[agent_name_to_box_id[name]] = value
 
-print(f"agent_name_to_box_id:{agent_name_to_box_id}")
-print(f"agent_box_ids:{agent_box_ids}")
-print(f"box_id_to_goal:{box_id_to_goal}")
-print(f"box_id_to_schedule:{box_id_to_schedule}")
-
 run(agent_box_ids, box_id_to_goal, box_id_to_schedule)
-
 time.sleep(2)
